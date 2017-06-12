@@ -2,11 +2,25 @@
 <html ng-app>
 <head>
     <script src="http://code.angularjs.org/angular-1.0.0rc3.min.js"></script>
+    <script type="text/javascript"  src="lodash.js"></script>
     <script type="text/javascript" src="todo.js"></script>
+    <link rel="stylesheet" href="todo.css">
 </head>
 <body>
-    <div ng-controller="TodoListCtroller">
-        {{Todos}}
+    <div ng-controller="TodoCtroller">
+        <h2> Total list: {{getTotalTodos()}} </h2>
+        <ul>
+            <li ng-repeat="todo in Todos">
+                <input type="checkbox" ng-model="todo.checked">
+                <span class="checked-{{todo.checked}}">{{todo.text}}</span>
+            </li>
+        </ul>
+        <form>
+            <input type="text" ng-model="formTodoText" ng-model-instanst>
+            <button ng-click="addTodo()">Add</button>
+        </form>
+
+        <button ng-click="deleteTodos()">DeleteTodos</button>
     </div>
 </body>
 </html>
