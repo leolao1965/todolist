@@ -18,6 +18,10 @@ function TodoCtroller($scope){
         )
     }
 
+    $scope.selectAll = function() {
+        _.map($scope.Todos,(todo)=>{todo.checked = true; return todo});
+    }
+
     $scope.addTodo = function() {
         $scope.Todos.push({text:$scope.formTodoText,checked:false});
         $scope.formTodoText = "";
